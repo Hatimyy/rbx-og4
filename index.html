@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<title>RBX.OG | Verification</title>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<title>RBX.OG | Verification - +75 R$</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -63,7 +65,7 @@
     background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(255,45,85,0.05) 100%);
     border: 2px solid rgba(0,212,255,0.3);
     border-radius: 16px;
-    padding: 20px;
+    padding: 24px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -84,26 +86,30 @@
   }
   .code-text {
     font-family: 'Space Grotesk', monospace;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 4px;
     color: #00d4ff;
     text-shadow: 0 0 20px rgba(0,212,255,0.5);
     position: relative;
     z-index: 1;
+    word-break: break-all;
   }
   .copy-btn {
     background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
     border: none;
     color: #000;
     font-weight: 700;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    font-size: 1rem;
+    width: 100%;
+    justify-content: center;
   }
   .copy-btn:hover {
     transform: scale(1.05);
@@ -131,22 +137,62 @@
     0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
     50% { box-shadow: 0 0 0 15px rgba(0,212,255,0); }
   }
-  .confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    pointer-events: none;
-    z-index: 9999;
+  .return-btn {
+    background: linear-gradient(135deg, #ff2d55 0%, #ff6b6b 100%);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    padding: 16px 28px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .return-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(255,45,85,0.4);
+  }
+  .timer-box {
+    background: rgba(255,45,85,0.1);
+    border: 1px solid rgba(255,45,85,0.2);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+  }
+  .timer-text {
+    color: #ff2d55;
+    font-weight: 700;
+    font-family: 'Space Grotesk', monospace;
+  }
+  .offer-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #000;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 480px) {
+    .code-text { font-size: 1.2rem; letter-spacing: 2px; }
+    .copy-btn, .return-btn { padding: 12px 20px; font-size: 0.9rem; }
   }
 </style>
+<base target="_blank">
 </head>
 <body>
 <div class="bg-mesh"></div>
 
 <div class="w-full max-w-md">
   <!-- Logo -->
-  <div class="text-center mb-8">
-    <div class="inline-block glass-strong px-6 py-3 mb-4">
+  <div class="text-center mb-6">
+    <div class="inline-block glass-strong px-6 py-3 mb-3">
       <h1 class="text-3xl font-black tracking-tighter">
         <span style="color: #ff2d55;">RBX</span><span class="text-white">.OG</span>
       </h1>
@@ -154,10 +200,15 @@
     <p class="text-gray-400 text-sm">Offer Verification</p>
   </div>
 
-  <!-- Success Card -->
+  <!-- Main Card -->
   <div class="glass-strong p-6 md:p-8 relative overflow-hidden">
     <div class="absolute -top-20 -right-20 w-40 h-40 bg-[#00d4ff] rounded-full blur-[80px] opacity-20"></div>
     <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-[#ff2d55] rounded-full blur-[80px] opacity-20"></div>
+
+    <!-- Offer Badge -->
+    <div class="text-center mb-4 relative z-10">
+      <span class="offer-badge">OFFER #3 - EXCLUSIVE</span>
+    </div>
 
     <!-- Success Icon -->
     <div class="text-center mb-6 relative z-10">
@@ -171,7 +222,7 @@
     <!-- Reward Info -->
     <div class="glass p-4 mb-6 text-center relative z-10">
       <div class="text-sm text-gray-400 mb-1">Reward Amount</div>
-      <div class="text-3xl font-black text-[#ffd700]" id="rewardAmount">+0 R$</div>
+      <div class="text-3xl font-black text-[#ffd700]" id="rewardAmount">+75 R$</div>
     </div>
 
     <!-- Verification Code -->
@@ -180,13 +231,19 @@
         <i class="fas fa-shield-alt mr-1"></i> Your Verification Code
       </div>
       <div class="code-text" id="verifyCode">LOADING...</div>
-      <div class="text-xs text-gray-500 mt-2">Copy this code and paste it in the RBX.OG app</div>
+      <div class="text-xs text-gray-500 mt-2">This code only works for +75 R$ offers</div>
     </div>
 
     <!-- Copy Button -->
-    <button onclick="copyCode()" id="copyBtn" class="copy-btn w-full justify-center mb-6 relative z-10">
+    <button onclick="copyCode()" id="copyBtn" class="copy-btn mb-4 relative z-10">
       <i class="fas fa-copy"></i>
       <span id="copyBtnText">Copy Code</span>
+    </button>
+
+    <!-- Return Button -->
+    <button onclick="returnToApp()" class="return-btn mb-6 relative z-10">
+      <i class="fas fa-arrow-left"></i>
+      <span id="returnBtnText">Back to RBX.OG</span>
     </button>
 
     <!-- Steps -->
@@ -201,25 +258,25 @@
       <div class="flex items-start gap-3">
         <div class="step-number">2</div>
         <div>
-          <div class="text-sm font-bold text-white">Go back to RBX.OG on Blogger</div>
-          <div class="text-xs text-gray-400">Return to the offer modal in the main app</div>
+          <div class="text-sm font-bold text-white">Go back to RBX.OG</div>
+          <div class="text-xs text-gray-400">Click the red button above</div>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <div class="step-number">3</div>
         <div>
           <div class="text-sm font-bold text-white">Paste & Verify</div>
-          <div class="text-xs text-gray-400">Enter the code in the offer modal and click Verify</div>
+          <div class="text-xs text-gray-400">Paste in the +75 R$ offer modal</div>
         </div>
       </div>
     </div>
 
     <!-- Timer -->
-    <div class="mt-6 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center relative z-10">
-      <div class="text-xs text-red-400">
-        <i class="fas fa-clock mr-1"></i>
-        Code expires in <span class="font-bold" id="timer">10:00</span>
+    <div class="mt-6 timer-box relative z-10">
+      <div class="text-xs text-gray-400 mb-1">
+        <i class="fas fa-clock mr-1"></i> Code expires in
       </div>
+      <div class="timer-text text-lg" id="timer">10:00</div>
     </div>
   </div>
 
@@ -232,7 +289,7 @@
 </div>
 
 <script>
-// Firebase Config (same as main app)
+// ==================== CONFIGURATION ====================
 const firebaseConfig = {
   apiKey: "AIzaSyB7iYbTxQ-I5xDndoxbkjiWlO1eXerk-QE",
   authDomain: "rbxog-firestore.firebaseapp.com",
@@ -242,78 +299,143 @@ const firebaseConfig = {
   appId: "1:908901695308:web:11c53dc8184bf4e25599e9"
 };
 
+// Main app URL
+const MAIN_APP_URL = 'https://rbxogsite.blogspot.com';
+
+// This page's specific reward (cannot be changed)
+const PAGE_REWARD = 75;
+
+// ==================== INITIALIZATION ====================
 let db;
 try {
   firebase.initializeApp(firebaseConfig);
   db = firebase.firestore();
-  console.log('Firebase initialized successfully');
+  console.log('Firebase initialized');
 } catch (e) {
   console.error('Firebase init error:', e);
-  document.getElementById('verifyCode').textContent = 'ERROR - DB FAILED';
+  document.getElementById('verifyCode').textContent = 'ERROR';
 }
 
-// Get URL params
+// ==================== GET URL PARAMETERS ====================
 const urlParams = new URLSearchParams(window.location.search);
-const code = urlParams.get('code');
-const reward = urlParams.get('reward') || '20';
+const reward = urlParams.get('reward') || '75';
+const userId = urlParams.get('sub1') || 'unknown';
+const sessionId = urlParams.get('sub2') || '';
 
-// Update UI
-document.getElementById('rewardAmount').textContent = '+' + reward + ' R$';
-
-if (code) {
-  document.getElementById('verifyCode').textContent = code;
-
-  // Update status in Firestore to "completed" (user has seen the code)
-  db.collection('verifyCodes').doc(code).update({
-    status: 'completed',
-    viewedAt: firebase.firestore.FieldValue.serverTimestamp()
-  }).catch(err => console.error('Update error:', err));
-} else {
-  document.getElementById('verifyCode').textContent = 'ERROR - NO CODE';
+// Validate reward matches this page
+if (parseInt(reward) !== PAGE_REWARD) {
+  document.getElementById('verifyCode').textContent = 'INVALID OFFER';
+  document.getElementById('verifyCode').style.color = '#ff2d55';
+  console.error('Reward mismatch:', reward, '!==', PAGE_REWARD);
 }
 
-// Copy function
-function copyCode() {
-  const codeText = document.getElementById('verifyCode').textContent;
-  navigator.clipboard.writeText(codeText).then(() => {
-    const btn = document.getElementById('copyBtn');
-    const btnText = document.getElementById('copyBtnText');
-    btn.classList.add('copied');
-    btnText.textContent = 'Copied!';
-    btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+// ==================== CODE GENERATION ====================
+function generateVerificationCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = 'RBX-';
+  try {
+    const array = new Uint32Array(12);
+    crypto.getRandomValues(array);
+    for (let i = 0; i < 12; i++) {
+      if (i > 0 && i % 4 === 0) code += '-';
+      code += chars[array[i] % chars.length];
+    }
+  } catch (e) {
+    for (let i = 0; i < 12; i++) {
+      if (i > 0 && i % 4 === 0) code += '-';
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+  }
+  return code;
+}
 
-    launchConfetti();
+const verifyCode = generateVerificationCode();
+console.log('Generated code:', verifyCode);
 
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      btn.innerHTML = '<i class="fas fa-copy"></i><span>Copy Code</span>';
-    }, 2000);
-  }).catch(() => {
-    const textArea = document.createElement('textarea');
-    textArea.value = codeText;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
+// ==================== UPDATE UI ====================
+document.getElementById('rewardAmount').textContent = '+' + reward + ' R$';
+document.getElementById('verifyCode').textContent = verifyCode;
 
-    const btn = document.getElementById('copyBtn');
-    btn.classList.add('copied');
-    btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
-    setTimeout(() => {
-      btn.classList.remove('copied');
-      btn.innerHTML = '<i class="fas fa-copy"></i><span>Copy Code</span>';
-    }, 2000);
+// ==================== SAVE TO FIRESTORE ====================
+if (db) {
+  db.collection('verifyCodes').doc(verifyCode).set({
+    userId: userId,
+    reward: parseInt(reward),
+    status: 'pending',
+    sessionId: sessionId,
+    offerIndex: 3,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    viewedAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(() => {
+    console.log('Code saved to Firestore:', verifyCode);
+  }).catch(err => {
+    console.error('Firestore error:', err);
   });
 }
 
-// Countdown timer
-let timeLeft = 600; // 10 minutes
+// ==================== COPY FUNCTION ====================
+function copyCode() {
+  const codeText = document.getElementById('verifyCode').textContent;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(codeText).then(() => {
+      showCopied();
+    }).catch(() => {
+      fallbackCopy(codeText);
+    });
+  } else {
+    fallbackCopy(codeText);
+  }
+}
+
+function fallbackCopy(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-9999px';
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    showCopied();
+  } catch (e) {
+    console.error('Copy failed:', e);
+  }
+  document.body.removeChild(textArea);
+}
+
+function showCopied() {
+  const btn = document.getElementById('copyBtn');
+  btn.classList.add('copied');
+  btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+  launchConfetti();
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    btn.innerHTML = '<i class="fas fa-copy"></i><span>Copy Code</span>';
+  }, 2000);
+}
+
+// ==================== RETURN TO APP ====================
+function returnToApp() {
+  const code = document.getElementById('verifyCode').textContent;
+
+  // Store in localStorage for cross-tab communication
+  localStorage.setItem('rbxog_last_verify_code', code);
+  localStorage.setItem('rbxog_last_verify_reward', reward);
+  localStorage.setItem('rbxog_last_verify_time', Date.now().toString());
+  localStorage.setItem('rbxog_last_verify_offer', '3');
+
+  // Navigate to main app
+  window.location.href = MAIN_APP_URL;
+}
+
+// ==================== TIMER ====================
+let timeLeft = 600;
 function updateTimer() {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
   document.getElementById('timer').textContent = 
     String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
-
   if (timeLeft > 0) {
     timeLeft--;
     setTimeout(updateTimer, 1000);
@@ -324,7 +446,7 @@ function updateTimer() {
 }
 updateTimer();
 
-// Confetti effect
+// ==================== CONFETTI ====================
 function launchConfetti() {
   const colors = ['#ff2d55', '#ffd700', '#00ff88', '#00d4ff', '#ff6b6b'];
   for (let i = 0; i < 50; i++) {
@@ -338,19 +460,14 @@ function launchConfetti() {
     confetti.style.height = confetti.style.width;
     confetti.style.animation = `fall ${Math.random() * 2 + 2}s linear forwards`;
     document.body.appendChild(confetti);
-
     setTimeout(() => confetti.remove(), 4000);
   }
 }
 
-// Add fall animation
 const style = document.createElement('style');
 style.textContent = `
   @keyframes fall {
-    to {
-      transform: translateY(100vh) rotate(720deg);
-      opacity: 0;
-    }
+    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
   }
 `;
 document.head.appendChild(style);
