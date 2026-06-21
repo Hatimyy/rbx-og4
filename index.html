@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<title>RBX.OG | Verification</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<style>
+  :root {
+    --primary: #ff2d55;
+    --secondary: #00d4ff;
+    --bg-dark: #0a0a0f;
+    --glass: rgba(255,255,255,0.05);
+    --glass-border: rgba(255,255,255,0.1);
+    --success: #00ff88;
+    --gold: #ffd700;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .bg-mesh {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(255,45,85,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0,212,255,0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(255,215,0,0.05) 0%, transparent 70%);
+    animation: meshMove 20s ease-in-out infinite;
+  }
+  @keyframes meshMove {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-30px) scale(1.1); }
+    66% { transform: translate(-20px,20px) scale(0.9); }
+  }
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+  }
+  .glass-strong {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px;
+  }
+  .code-box {
+    background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(255,45,85,0.05) 100%);
+    border: 2px solid rgba(0,212,255,0.3);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .code-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(0,212,255,0.05) 50%, transparent 70%);
+    animation: shine 3s infinite;
+  }
+  @keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+  }
+  .code-text {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0,212,255,0.5);
+    position: relative;
+    z-index: 1;
+  }
+  .copy-btn {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    border: none;
+    color: #000;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .copy-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0,212,255,0.4);
+  }
+  .copy-btn.copied {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+  }
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff2d55, #ff6b6b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .pulse-ring {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
+    50% { box-shadow: 0 0 0 15px rgba(0,212,255,0); }
+  }
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 9999;
+  }
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+
+<div class="w-full max-w-md">
+  <!-- Logo -->
+  <div class="text-center mb-8">
+    <div class="inline-block glass-strong px-6 py-3 mb-4">
+      <h1 class="text-3xl font-black tracking-tighter">
+        <span style="color: #ff2d55;">RBX</span><span class="text-white">.OG</span>
+      </h1>
+    </div>
+    <p class="text-gray-400 text-sm">Offer Verification</p>
+  </div>
+
+  <!-- Success Card -->
+  <div class="glass-strong p-6 md:p-8 relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-40 h-40 bg-[#00d4ff] rounded-full blur-[80px] opacity-20"></div>
+    <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-[#ff2d55] rounded-full blur-[80px] opacity-20"></div>
+
+    <!-- Success Icon -->
+    <div class="text-center mb-6 relative z-10">
+      <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#00ff88] to-[#00d4ff] flex items-center justify-center mx-auto mb-4 pulse-ring">
+        <i class="fas fa-check text-3xl text-black"></i>
+      </div>
+      <h2 class="text-2xl font-bold text-white mb-1">Offer Completed!</h2>
+      <p class="text-sm text-gray-400">Your verification code is ready</p>
+    </div>
+
+    <!-- Reward Info -->
+    <div class="glass p-4 mb-6 text-center relative z-10">
+      <div class="text-sm text-gray-400 mb-1">Reward Amount</div>
+      <div class="text-3xl font-black text-[#ffd700]" id="rewardAmount">+0 R$</div>
+    </div>
+
+    <!-- Verification Code -->
+    <div class="code-box mb-6 relative z-10">
+      <div class="text-xs text-[#00d4ff] mb-2 uppercase tracking-wider font-bold">
+        <i class="fas fa-shield-alt mr-1"></i> Your Verification Code
+      </div>
+      <div class="code-text" id="verifyCode">LOADING...</div>
+      <div class="text-xs text-gray-500 mt-2">Copy this code and paste it in the RBX.OG app</div>
+    </div>
+
+    <!-- Copy Button -->
+    <button onclick="copyCode()" id="copyBtn" class="copy-btn w-full justify-center mb-6 relative z-10">
+      <i class="fas fa-copy"></i>
+      <span id="copyBtnText">Copy Code</span>
+    </button>
+
+    <!-- Steps -->
+    <div class="space-y-4 relative z-10">
+      <div class="flex items-start gap-3">
+        <div class="step-number">1</div>
+        <div>
+          <div class="text-sm font-bold text-white">Copy the code above</div>
+          <div class="text-xs text-gray-400">Click the blue button to copy</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="step-number">2</div>
+        <div>
+          <div class="text-sm font-bold text-white">Go back to RBX.OG on Blogger</div>
+          <div class="text-xs text-gray-400">Return to the offer modal in the main app</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="step-number">3</div>
+        <div>
+          <div class="text-sm font-bold text-white">Paste & Verify</div>
+          <div class="text-xs text-gray-400">Enter the code in the offer modal and click Verify</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer -->
+    <div class="mt-6 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center relative z-10">
+      <div class="text-xs text-red-400">
+        <i class="fas fa-clock mr-1"></i>
+        Code expires in <span class="font-bold" id="timer">10:00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center mt-6">
+    <p class="text-xs text-gray-600">
+      <i class="fas fa-lock mr-1"></i> Secure verification system
+    </p>
+  </div>
+</div>
+
+<script>
+// Firebase Config (same as main app)
+const firebaseConfig = {
+  apiKey: "AIzaSyB7iYbTxQ-I5xDndoxbkjiWlO1eXerk-QE",
+  authDomain: "rbxog-firestore.firebaseapp.com",
+  projectId: "rbxog-firestore",
+  storageBucket: "rbxog-firestore.firebasestorage.app",
+  messagingSenderId: "908901695308",
+  appId: "1:908901695308:web:11c53dc8184bf4e25599e9"
+};
+
+let db;
+try {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+  console.log('Firebase initialized successfully');
+} catch (e) {
+  console.error('Firebase init error:', e);
+  document.getElementById('verifyCode').textContent = 'ERROR - DB FAILED';
+}
+
+// Get URL params
+const urlParams = new URLSearchParams(window.location.search);
+const code = urlParams.get('code');
+const reward = urlParams.get('reward') || '20';
+
+// Update UI
+document.getElementById('rewardAmount').textContent = '+' + reward + ' R$';
+
+if (code) {
+  document.getElementById('verifyCode').textContent = code;
+
+  // Update status in Firestore to "completed" (user has seen the code)
+  db.collection('verifyCodes').doc(code).update({
+    status: 'completed',
+    viewedAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).catch(err => console.error('Update error:', err));
+} else {
+  document.getElementById('verifyCode').textContent = 'ERROR - NO CODE';
+}
+
+// Copy function
+function copyCode() {
+  const codeText = document.getElementById('verifyCode').textContent;
+  navigator.clipboard.writeText(codeText).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const btnText = document.getElementById('copyBtnText');
+    btn.classList.add('copied');
+    btnText.textContent = 'Copied!';
+    btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+
+    launchConfetti();
+
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<i class="fas fa-copy"></i><span>Copy Code</span>';
+    }, 2000);
+  }).catch(() => {
+    const textArea = document.createElement('textarea');
+    textArea.value = codeText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+
+    const btn = document.getElementById('copyBtn');
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<i class="fas fa-copy"></i><span>Copy Code</span>';
+    }, 2000);
+  });
+}
+
+// Countdown timer
+let timeLeft = 600; // 10 minutes
+function updateTimer() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  document.getElementById('timer').textContent = 
+    String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+
+  if (timeLeft > 0) {
+    timeLeft--;
+    setTimeout(updateTimer, 1000);
+  } else {
+    document.getElementById('timer').textContent = 'EXPIRED';
+    document.getElementById('timer').classList.add('text-red-500');
+  }
+}
+updateTimer();
+
+// Confetti effect
+function launchConfetti() {
+  const colors = ['#ff2d55', '#ffd700', '#00ff88', '#00d4ff', '#ff6b6b'];
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.top = '-10px';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.borderRadius = '50%';
+    confetti.style.width = (Math.random() * 8 + 4) + 'px';
+    confetti.style.height = confetti.style.width;
+    confetti.style.animation = `fall ${Math.random() * 2 + 2}s linear forwards`;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 4000);
+  }
+}
+
+// Add fall animation
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
